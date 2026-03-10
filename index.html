@@ -929,57 +929,89 @@
       .toggle-save { display: block; font-size: 8px; margin-left: 0; margin-top: 2px; }
       .plan-body { padding: 22px 20px 28px; }
 
-      /* ── Sample spreadsheet — complete mobile redesign ── */
+      /* ── Sample spreadsheet — premium mobile redesign ── */
       #sample .excel-window { margin: 0; border-radius: 12px; }
-      /* Titlebar: one-line filename */
       .excel-titlebar { overflow: hidden; gap: 6px; }
       .win-filename {
         display: block; flex: 1; min-width: 0;
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px;
       }
-      /* Toolbar: clean up, hide overflow text */
       .excel-toolbar { overflow: hidden; gap: 14px; }
       .excel-toolbar > span:last-child { display: none; }
-      /* Transform table into mobile card rows */
+
+      /* ── Premium card rows ── */
       table.data-table, table.data-table tbody { display: block; }
       table.data-table thead { display: none; }
       table.data-table tbody tr {
         display: grid;
         grid-template-columns: 20px 1fr auto;
-        grid-template-rows: auto auto;
-        column-gap: 12px; row-gap: 6px;
-        padding: 14px 16px;
+        grid-template-rows: auto auto auto;
+        column-gap: 12px; row-gap: 0;
+        padding: 14px 16px 12px;
         border-bottom: 1px solid rgba(255,255,255,0.06);
-        align-items: center;
+        border-left: 3px solid transparent;
+        align-items: start;
       }
+      table.data-table tbody tr:has(.badge-planning) { border-left-color: var(--orange); }
+      table.data-table tbody tr:has(.badge-prebid)   { border-left-color: #7aacee; }
       table.data-table td { display: block; padding: 0; border: none; white-space: normal; }
+
       /* Row number */
       table.data-table td:nth-child(1) {
-        grid-column: 1; grid-row: 1 / 3; align-self: center;
+        grid-column: 1; grid-row: 1 / 4; align-self: center;
         font-size: 11px; color: #555; text-align: right;
       }
-      /* Project name */
+      /* Project name + location via ::after */
       table.data-table td:nth-child(2) {
         grid-column: 2; grid-row: 1;
         font-weight: 700 !important; font-size: 14px; line-height: 1.3;
         color: #e4e8f0 !important; word-break: break-word;
+        padding-bottom: 5px;
       }
-      /* Type — hidden (self-evident from project name) */
-      table.data-table td:nth-child(3) { display: none; }
-      /* Stage badge — below project name */
-      table.data-table td:nth-child(4) { grid-column: 2; grid-row: 2; align-self: center; }
-      /* Contact, Phone, Email — hidden */
-      table.data-table td:nth-child(5),
+      table.data-table td:nth-child(2)[data-location]::after {
+        content: attr(data-location);
+        display: block; font-size: 10px; font-weight: 500;
+        color: #555; letter-spacing: 0.06em; text-transform: uppercase;
+        margin-top: 3px;
+      }
+      /* Type — small muted label */
+      table.data-table td:nth-child(3) {
+        grid-column: 2; grid-row: 2;
+        font-size: 11px; color: #666 !important;
+        display: block; padding-bottom: 6px;
+      }
+      /* Stage badge */
+      table.data-table td:nth-child(4) {
+        grid-column: 3; grid-row: 2;
+        display: block; align-self: start; padding-bottom: 6px;
+      }
+      /* Contact — blurred teaser */
+      table.data-table td:nth-child(5) {
+        grid-column: 2 / 4; grid-row: 3;
+        display: block; font-size: 11px;
+        color: #8891a5 !important;
+        filter: blur(3.5px); user-select: none; pointer-events: none;
+        opacity: 0.7;
+      }
+      /* Phone, Email — hidden */
       table.data-table td:nth-child(6),
       table.data-table td:nth-child(7) { display: none; }
-      /* Est. value — right col, spans both rows */
+      /* Est. value — orange, prominent */
       table.data-table td:nth-child(8) {
-        grid-column: 3; grid-row: 1 / 3; align-self: center;
-        font-weight: 700 !important; font-size: 14px;
-        color: #c9cfd9 !important; white-space: nowrap; text-align: right;
+        grid-column: 3; grid-row: 1;
+        font-weight: 800 !important; font-size: 16px;
+        color: var(--orange) !important; white-space: nowrap; text-align: right;
       }
-      /* CTA overlay — full-width button */
-      .table-lock-overlay { padding: 0 16px 28px; }
+      /* Improved lock overlay */
+      .table-lock-overlay {
+        padding: 0 16px 28px;
+        background: linear-gradient(
+          to bottom,
+          rgba(30,33,36,0) 0%,
+          rgba(30,33,36,0.88) 30%,
+          rgba(30,33,36,1) 60%
+        );
+      }
       .table-lock-overlay .btn-primary {
         width: 100%; justify-content: center; box-sizing: border-box;
         font-size: 14px !important; padding: 16px !important;
@@ -1331,7 +1363,7 @@
           <tbody>
             <tr>
               <td style="color:#666;">1</td>
-              <td style="font-weight:600;color:#e4e8f0;">Meridian Gateway Mixed-Use</td>
+              <td style="font-weight:600;color:#e4e8f0;" data-location="Phoenix, AZ">Meridian Gateway Mixed-Use</td>
               <td style="color:#8891a5;">Mixed-Use</td>
               <td><span class="stage-badge badge-planning">Planning</span></td>
               <td style="color:#c9cfd9;">J. Harrington, Principal AIA</td>
@@ -1341,7 +1373,7 @@
             </tr>
             <tr>
               <td style="color:#666;">2</td>
-              <td style="font-weight:600;color:#e4e8f0;">Harbor View Multifamily Ph.2</td>
+              <td style="font-weight:600;color:#e4e8f0;" data-location="Portland, OR">Harbor View Multifamily Ph.2</td>
               <td style="color:#8891a5;">Multifamily</td>
               <td><span class="stage-badge badge-planning">Planning</span></td>
               <td style="color:#c9cfd9;">S. Kowalski, Project Dev</td>
@@ -1351,7 +1383,7 @@
             </tr>
             <tr>
               <td style="color:#666;">3</td>
-              <td style="font-weight:600;color:#e4e8f0;">Willow Creek Corporate Campus</td>
+              <td style="font-weight:600;color:#e4e8f0;" data-location="Seattle, WA">Willow Creek Corporate Campus</td>
               <td style="color:#8891a5;">Office</td>
               <td><span class="stage-badge badge-prebid">Pre-Bid</span></td>
               <td style="color:#c9cfd9;">R. Chen, Owner's Rep</td>
@@ -1361,7 +1393,7 @@
             </tr>
             <tr>
               <td style="color:#666;">4</td>
-              <td style="font-weight:600;color:#e4e8f0;">Summit Ridge Hotel &amp; Suites</td>
+              <td style="font-weight:600;color:#e4e8f0;" data-location="Denver, CO">Summit Ridge Hotel &amp; Suites</td>
               <td style="color:#8891a5;">Hospitality</td>
               <td><span class="stage-badge badge-planning">Planning</span></td>
               <td style="color:#c9cfd9;">M. Torres, Architect</td>
@@ -1371,7 +1403,7 @@
             </tr>
             <tr>
               <td style="color:#666;">5</td>
-              <td style="font-weight:600;color:#e4e8f0;">Eastgate Retail Center</td>
+              <td style="font-weight:600;color:#e4e8f0;" data-location="Scottsdale, AZ">Eastgate Retail Center</td>
               <td style="color:#8891a5;">Retail</td>
               <td><span class="stage-badge badge-planning">Planning</span></td>
               <td style="color:#c9cfd9;">A. Patel, Developer</td>
