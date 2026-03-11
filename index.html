@@ -654,6 +654,7 @@
     .plan-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 20px; margin-top: 44px;
+      scroll-margin-top: 80px;
     }
     .plan-card {
       background: #fff; border: 1px solid var(--stone); border-radius: 4px;
@@ -675,11 +676,9 @@
     .plan-card.featured .plan-free-badge { background: rgba(200,90,30,0.15); border-color: rgba(200,90,30,0.35); }
     .plan-card.featured .plan-free-label { color: var(--orange-lt); }
     .plan-card.featured .plan-free-sub { color: var(--muted); }
-    .plan-card.featured .company-input { background: var(--raised); border-color: var(--dim-border); color: var(--text); }
-    .plan-card.featured .company-input::placeholder { color: var(--muted); }
     .plan-per-lead { font-size: 11px; color: var(--orange); font-weight: 600; margin-top: 4px; margin-bottom: 0; }
     .plan-map-wrap { position: relative; }
-    .plan-map { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .plan-map { width: 100%; height: 200px; object-fit: cover; display: block; }
     .plan-best { position: absolute; top: 10px; right: 10px; background: var(--orange); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; box-shadow: 0 4px 16px rgba(200,90,30,0.5); }
     .plan-body { padding: 28px 28px 32px; }
     .plan-region {
@@ -718,15 +717,6 @@
       content: ''; width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
       background: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7.5' stroke='%23C85A1E' stroke-opacity='0.3'/%3E%3Cpath d='M5 8l2.5 2.5 3.5-3.5' stroke='%23C85A1E' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
     }
-    .company-input {
-      width: 100%; font-family: 'DM Sans', sans-serif; font-size: 14px;
-      padding: 11px 14px; border: 1px solid var(--stone); border-radius: 3px;
-      color: var(--lt-text); background: var(--ivory);
-      margin-bottom: 10px; outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .company-input:focus { border-color: var(--orange); background: #fff; }
-    .company-input::placeholder { color: var(--lt-muted); }
 
     /* ── TRIAL STEPS ─────────────────────────────────────── */
     #trial {
@@ -1048,7 +1038,7 @@
       <a href="#sample" class="btn-outline" style="font-size:13px;padding:10px 20px;">
         See Sample List
       </a>
-      <a href="#pricing" class="btn-primary" style="font-size:13px;padding:10px 20px;">
+      <a href="#plan-cards" class="btn-primary" style="font-size:13px;padding:10px 20px;">
         Start Free Trial
       </a>
     </div>
@@ -1074,7 +1064,7 @@
       ProjectPro delivers 150–250 early-stage commercial construction projects to your inbox every Monday — with architect, developer, and GC contacts — while specs are still being written.
     </p>
     <div class="hero-ctas" style="display:flex;gap:14px;flex-wrap:wrap;">
-      <a href="#pricing" class="btn-primary" data-track="hero-cta-primary" style="font-size:16px;padding:17px 32px;">
+      <a href="#plan-cards" class="btn-primary" data-track="hero-cta-primary" style="font-size:16px;padding:17px 32px;">
         Start Free — 30 Days →
       </a>
       <a href="#sample" class="btn-outline" data-track="hero-cta-sample" style="font-size:16px;padding:16px 28px;">
@@ -1282,7 +1272,7 @@
         <li><span class="chk" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="#C85A1E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Architect, developer &amp; GC: full name, title, phone, email</li>
         <li><span class="chk" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="#C85A1E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>New and active projects only — no stale repeats</li>
       </ul>
-      <a href="#pricing" class="btn-primary rv" data-track="monday-cta" style="margin-top:36px;font-size:15px;">
+      <a href="#plan-cards" class="btn-primary rv" data-track="monday-cta" style="margin-top:36px;font-size:15px;">
         Get Your First Monday List Free →
       </a>
     </div>
@@ -1315,7 +1305,7 @@
         <li><span class="chk-lt" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="#C85A1E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong style="color:var(--lt-text);">GC / Builder Contact</strong> — Where available</div></li>
         <li><span class="chk-lt" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-3.5" stroke="#C85A1E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong style="color:var(--lt-text);">Stage + Project Value</strong> — Construction stage and estimated scale</div></li>
       </ul>
-      <a href="#pricing" class="btn-primary" data-track="wyg-cta" style="margin-top:36px;font-size:15px;">
+      <a href="#plan-cards" class="btn-primary" data-track="wyg-cta" style="margin-top:36px;font-size:15px;">
         Start Free Trial →
       </a>
     </div>
@@ -1441,7 +1431,7 @@
             </tbody>
           </table>
           <div class="table-lock-overlay">
-            <a href="#pricing" class="btn-primary" data-track="sample-cta" style="font-size:14px;padding:13px 28px;">
+            <a href="#plan-cards" class="btn-primary" data-track="sample-cta" style="font-size:14px;padding:13px 28px;">
               Start Free Trial to Unlock Full List →
             </a>
             <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:12px;">30-day free trial · No charge today · Cancel before day 30</p>
@@ -1576,7 +1566,7 @@
         Choose Your Region.<br><span class="orange">First Month Is Free.</span>
       </h2>
       <p class="rv rv-d2" style="font-size:16px;color:var(--lt-muted);max-width:520px;margin:20px auto 36px;line-height:1.7;">
-        Select coverage area and billing preference. Enter your company name and go straight to checkout.
+        Select coverage area and billing preference, then go straight to checkout.
       </p>
 
       <!-- 3-option billing toggle -->
@@ -1589,7 +1579,7 @@
       </div>
     </div>
 
-    <div class="plan-grid rv rv-d2">
+    <div class="plan-grid rv rv-d2" id="plan-cards">
 
       <!-- WESTERN -->
       <div class="plan-card">
@@ -1624,7 +1614,6 @@
             <li>Excel delivery every Monday</li>
             <li>Unlimited users · No per-seat fees</li>
           </ul>
-          <input type="text" id="company-western" class="company-input" placeholder="Your Company Name" aria-label="Company name for Western US plan">
           <button onclick="goToCheckout('western',this)" class="btn-primary" data-track="pricing-western" style="width:100%;justify-content:center;font-size:14px;">
             Start Free Trial — Western →
           </button>
@@ -1666,7 +1655,6 @@
             <li>Excel delivery every Monday</li>
             <li>Unlimited users · No per-seat fees</li>
           </ul>
-          <input type="text" id="company-eastern" class="company-input" placeholder="Your Company Name" aria-label="Company name for Eastern US plan">
           <button onclick="goToCheckout('eastern',this)" class="btn-primary" data-track="pricing-eastern" style="width:100%;justify-content:center;font-size:14px;">
             Start Free Trial — Eastern →
           </button>
@@ -1708,7 +1696,6 @@
             <li>Excel delivery every Monday</li>
             <li>Unlimited users · No per-seat fees</li>
           </ul>
-          <input type="text" id="company-full" class="company-input" placeholder="Your Company Name" aria-label="Company name for Full US plan">
           <button onclick="goToCheckout('full',this)" class="btn-primary" data-track="pricing-full-us" style="width:100%;justify-content:center;font-size:14px;background:linear-gradient(135deg,var(--orange),var(--orange-lt));">
             Start Free Trial — Full US →
           </button>
@@ -1754,7 +1741,7 @@
         <p class="step-p">If you don't see the value, cancel before day 30 and you will never be charged. No gotcha fees, no questions asked.</p>
       </div>
     </div>
-    <a href="#pricing" class="btn-primary rv rv-d4" data-track="trial-cta" style="font-size:17px;padding:18px 40px;margin-top:52px;">
+    <a href="#plan-cards" class="btn-primary rv rv-d4" data-track="trial-cta" style="font-size:17px;padding:18px 40px;margin-top:52px;">
       Select Your Region &amp; Start Free →
     </a>
   </div>
@@ -1816,7 +1803,7 @@
       Every week you wait is another Monday's worth of projects where specs are being written without you in the room. Start your 30-day free trial today.
     </p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="rv rv-d3">
-      <a href="#pricing" class="btn-primary" data-track="final-cta-primary" style="font-size:17px;padding:18px 40px;">
+      <a href="#plan-cards" class="btn-primary" data-track="final-cta-primary" style="font-size:17px;padding:18px 40px;">
         Select Region &amp; Start Free →
       </a>
       <a href="#sample" class="btn-outline" data-track="final-cta-sample" style="font-size:17px;padding:17px 36px;">
@@ -1922,14 +1909,12 @@ var wooVariations = {
 var wooParents = { western: 540, eastern: 546, full: 554 };
 
 function goToCheckout(region, btn){
-  var company     = document.getElementById('company-'+region).value.trim();
   var variationId = wooVariations[region][currentBilling];
 
   /* Instant visual feedback */
   if(btn){ btn.textContent = 'Loading…'; btn.style.opacity = '0.75'; btn.disabled = true; }
 
   var url = 'https://projectproconstructionleads.com/?lp_buy=' + variationId;
-  if(company) url += '&billing_company=' + encodeURIComponent(company);
   if(typeof gtag !== 'undefined') gtag('event','cta_click',{cta_label:'pricing-'+region, billing: currentBilling});
   if(typeof dataLayer !== 'undefined') dataLayer.push({event:'cta_click', ctaLabel:'pricing-'+region, billing: currentBilling});
   window.location.href = url;
