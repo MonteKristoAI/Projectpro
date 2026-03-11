@@ -8,6 +8,8 @@
   <meta name="description" content="ProjectPro delivers 150–250 early-stage commercial construction projects every Monday — with architect, developer, and GC contacts — when specs are still being written.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://projectproconstructionleads.com">
+  <link rel="dns-prefetch" href="https://projectproconstructionleads.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -1623,7 +1625,7 @@
             <li>Unlimited users · No per-seat fees</li>
           </ul>
           <input type="text" id="company-western" class="company-input" placeholder="Your Company Name" aria-label="Company name for Western US plan">
-          <button onclick="goToCheckout('western')" class="btn-primary" data-track="pricing-western" style="width:100%;justify-content:center;font-size:14px;">
+          <button onclick="goToCheckout('western',this)" class="btn-primary" data-track="pricing-western" style="width:100%;justify-content:center;font-size:14px;">
             Start Free Trial — Western →
           </button>
           <p style="text-align:center;font-size:11px;color:var(--lt-muted);margin-top:10px;">No charge today · Cancel before day 30</p>
@@ -1665,7 +1667,7 @@
             <li>Unlimited users · No per-seat fees</li>
           </ul>
           <input type="text" id="company-eastern" class="company-input" placeholder="Your Company Name" aria-label="Company name for Eastern US plan">
-          <button onclick="goToCheckout('eastern')" class="btn-primary" data-track="pricing-eastern" style="width:100%;justify-content:center;font-size:14px;">
+          <button onclick="goToCheckout('eastern',this)" class="btn-primary" data-track="pricing-eastern" style="width:100%;justify-content:center;font-size:14px;">
             Start Free Trial — Eastern →
           </button>
           <p style="text-align:center;font-size:11px;color:var(--lt-muted);margin-top:10px;">No charge today · Cancel before day 30</p>
@@ -1707,7 +1709,7 @@
             <li>Unlimited users · No per-seat fees</li>
           </ul>
           <input type="text" id="company-full" class="company-input" placeholder="Your Company Name" aria-label="Company name for Full US plan">
-          <button onclick="goToCheckout('full')" class="btn-primary" data-track="pricing-full-us" style="width:100%;justify-content:center;font-size:14px;background:linear-gradient(135deg,var(--orange),var(--orange-lt));">
+          <button onclick="goToCheckout('full',this)" class="btn-primary" data-track="pricing-full-us" style="width:100%;justify-content:center;font-size:14px;background:linear-gradient(135deg,var(--orange),var(--orange-lt));">
             Start Free Trial — Full US →
           </button>
           <p style="text-align:center;font-size:11px;color:var(--lt-muted);margin-top:10px;">No charge today · Cancel before day 30</p>
@@ -1890,7 +1892,10 @@
 })();
 
 /* ── BILLING TOGGLE ──────────────────────────── */
+var currentBilling = 'annual';
+
 function setBilling(type){
+  currentBilling = type;
   ['monthly','quarterly','annual'].forEach(function(t){
     var btn = document.getElementById('btn-'+t);
     btn.classList.toggle('active', t === type);
@@ -1908,20 +1913,52 @@ function setBilling(type){
 }
 setBilling('annual');
 
-/* ── CHECKOUT ────────────────────────────────── */
-var checkoutUrls = {
-  western: 'https://projectproconstructionleads.com/product/project-leads-subscription-western-us/',
-  eastern: 'https://projectproconstructionleads.com/product/project-leads-subscription-eastern-us/',
-  full:    'https://projectproconstructionleads.com/product/project-leads-subscription-entire-us/'
+/* ── CHECKOUT — WooCommerce add-to-cart ──────── */
+var wooVariations = {
+  western: { monthly: 541, quarterly: 542, annual: 543 },
+  eastern: { monthly: 550, quarterly: 551, annual: 549 },
+  full:    { monthly: 555, quarterly: 556, annual: 557 }
 };
-function goToCheckout(region){
-  var company = document.getElementById('company-'+region).value.trim();
-  var url = checkoutUrls[region];
-  if(company) url += (url.indexOf('?') >= 0 ? '&' : '?') + 'billing_company=' + encodeURIComponent(company);
-  if(typeof gtag !== 'undefined') gtag('event','cta_click',{cta_label:'pricing-'+region});
-  if(typeof dataLayer !== 'undefined') dataLayer.push({event:'cta_click',ctaLabel:'pricing-'+region});
+var wooParents = { western: 540, eastern: 546, full: 554 };
+
+function goToCheckout(region, btn){
+  var company     = document.getElementById('company-'+region).value.trim();
+  var variationId = wooVariations[region][currentBilling];
+
+  /* Instant visual feedback */
+  if(btn){ btn.textContent = 'Loading…'; btn.style.opacity = '0.75'; btn.disabled = true; }
+
+  var url = 'https://projectproconstructionleads.com/?lp_buy=' + variationId;
+  if(company) url += '&billing_company=' + encodeURIComponent(company);
+  if(typeof gtag !== 'undefined') gtag('event','cta_click',{cta_label:'pricing-'+region, billing: currentBilling});
+  if(typeof dataLayer !== 'undefined') dataLayer.push({event:'cta_click', ctaLabel:'pricing-'+region, billing: currentBilling});
   window.location.href = url;
 }
+
+/* ── PRERENDER ON HOVER (Chrome 108+) ───────── */
+var prerenderedUrl = null;
+function prerenderCheckout(region) {
+  var variationId = wooVariations[region][currentBilling];
+  var url = 'https://projectproconstructionleads.com/?lp_buy=' + variationId;
+  if(prerenderedUrl === url) return;
+  prerenderedUrl = url;
+  if(HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+    var old = document.querySelector('script[type="speculationrules"]');
+    if(old) old.remove();
+    var s = document.createElement('script');
+    s.type = 'speculationrules';
+    s.textContent = JSON.stringify({"prerender":[{"source":"list","urls":[url]}]});
+    document.head.appendChild(s);
+  }
+}
+document.addEventListener('DOMContentLoaded', function(){
+  ['western','eastern','full'].forEach(function(r){
+    var btn = document.querySelector('[data-track="pricing-'+r+'"]');
+    if(!btn) return;
+    btn.addEventListener('mouseenter', function(){ prerenderCheckout(r); });
+    btn.addEventListener('touchstart',  function(){ prerenderCheckout(r); }, {passive:true});
+  });
+});
 
 /* ── SCROLL DEPTH TRACKING ───────────────────── */
 (function(){
