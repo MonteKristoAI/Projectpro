@@ -53,9 +53,9 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
-}}.
+.
 
-Okej, sada hocu i da unapredis znacajno ovaj CLAUDE.md system prompt da bude mnogo bolji za moje svrhe:
+
 
 {{
 # CLAUDE.md — Frontend Website Rules
