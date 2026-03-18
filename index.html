@@ -8,10 +8,9 @@
   <meta name="description" content="ProjectPro delivers 150–250 early-stage commercial construction projects every Monday — with architect, developer, and GC contacts — when specs are still being written.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://projectproconstructionleads.com">
-  <link rel="dns-prefetch" href="https://projectproconstructionleads.com">
   <link rel="preload" as="image" href="brand_assets/hero%20image.webp" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap"></noscript>
   <style>
     /* ── TOKENS ────────────────────────────────────────── */
     :root {
@@ -1899,7 +1898,7 @@ function setBilling(type){
     el.style.display = type === 'monthly' ? 'none' : 'block';
   });
 }
-setBilling('annual');
+requestAnimationFrame(function(){ setBilling('annual'); });
 
 /* ── CHECKOUT — WooCommerce add-to-cart ──────── */
 var wooVariations = {
