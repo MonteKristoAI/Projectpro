@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://projectproconstructionleads.com">
   <link rel="dns-prefetch" href="https://projectproconstructionleads.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preload" as="image" href="https://projectproconstructionleads.com/wp-content/uploads/2024/06/pexels-ron-lach-8817834-scaled.jpg" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ── TOKENS ────────────────────────────────────────── */
     :root {
@@ -569,12 +569,12 @@
       max-width: 860px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2;
     }
     .testi-quote-mark {
-      font-family: 'Instrument Serif', serif; font-style: italic;
+      font-family: Georgia, 'Times New Roman', serif; font-style: italic;
       font-size: 180px; line-height: 0.5; color: var(--orange); opacity: 0.22;
       display: block; margin-bottom: 24px; user-select: none;
     }
     .testi-q {
-      font-family: 'Instrument Serif', serif; font-style: italic;
+      font-family: Georgia, 'Times New Roman', serif; font-style: italic;
       font-size: clamp(24px, 3.5vw, 40px); line-height: 1.3;
       color: #fff; font-weight: 400; margin-bottom: 40px;
     }
@@ -755,7 +755,7 @@
     }
     summary::-webkit-details-marker { display: none; }
     summary::after {
-      content: '+'; font-size: 22px; font-weight: 300; color: var(--orange);
+      content: '+'; font-size: 22px; font-weight: 400; color: var(--orange);
       flex-shrink: 0; transition: transform 0.25s ease;
     }
     details[open] summary::after { transform: rotate(45deg); }
@@ -1032,7 +1032,7 @@
     <a href="/" aria-label="ProjectPro Construction Leads">
       <img src="brand_assets/ProjectPro-Logo-Horizontal-300x64.png"
            alt="ProjectPro Construction Leads"
-           class="nav-logo">
+           class="nav-logo" width="300" height="64" fetchpriority="high">
     </a>
     <div class="nav-cta-wrap">
       <a href="#sample" class="btn-outline" style="font-size:13px;padding:10px 20px;">
@@ -1277,7 +1277,7 @@
       </a>
     </div>
     <div class="photo-frame rv-right">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2022/05/pexels-thirdman-5582867-scaled-e1653507932164.jpg" alt="Sales team reviewing planning documents and specifications">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2022/05/pexels-thirdman-5582867-scaled-e1653507932164.jpg" alt="Sales team reviewing planning documents and specifications" width="800" height="600" loading="lazy">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--orange),var(--orange-lt));pointer-events:none;" aria-hidden="true"></div>
       <div class="photo-badge">
         <div class="photo-badge-val">Every Monday</div>
@@ -1310,7 +1310,7 @@
       </a>
     </div>
     <div class="photo-frame-lt rv-left">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2022/05/pexels-thirdman-5582599-scaled.jpg" alt="Commercial construction project documents and blueprints">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2022/05/pexels-thirdman-5582599-scaled.jpg" alt="Commercial construction project documents and blueprints" width="800" height="600" loading="lazy">
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(245,240,235,0.4) 0%,transparent 60%);border-radius:4px;pointer-events:none;" aria-hidden="true"></div>
       <div class="photo-badge-lt">
         <div class="photo-badge-lt-val">Phone + Email</div>
@@ -1519,31 +1519,31 @@
   </div>
   <div style="overflow:hidden;">
     <div class="logo-track">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-ADC.png" alt="ADC">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Boise-Cascade.webp" alt="Boise Cascade">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Builders-Lighting.png" alt="Builders Lighting">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-GTS.webp" alt="GTS">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-JB.webp" alt="JB">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Meeks-1.png" alt="Meeks">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-RES-Arch-Sales.webp" alt="RES Arch Sales">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Royal-Building-Solutions.webp" alt="Royal Building Solutions">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Sunset-Stone.png" alt="Sunset Stone">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-pioneer.webp" alt="Pioneer">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-sunvalley.webp" alt="Sun Valley">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/logo-facadesxi.webp" alt="Facades XI">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-ADC.png" alt="ADC" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Boise-Cascade.webp" alt="Boise Cascade" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Builders-Lighting.png" alt="Builders Lighting" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-GTS.webp" alt="GTS" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-JB.webp" alt="JB" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Meeks-1.png" alt="Meeks" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-RES-Arch-Sales.webp" alt="RES Arch Sales" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Royal-Building-Solutions.webp" alt="Royal Building Solutions" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Sunset-Stone.png" alt="Sunset Stone" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-pioneer.webp" alt="Pioneer" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-sunvalley.webp" alt="Sun Valley" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/logo-facadesxi.webp" alt="Facades XI" width="140" height="40" loading="lazy">
       <!-- duplicate -->
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-ADC.png" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Boise-Cascade.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Builders-Lighting.png" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-GTS.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-JB.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Meeks-1.png" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-RES-Arch-Sales.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Royal-Building-Solutions.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Sunset-Stone.png" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-pioneer.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-sunvalley.webp" alt="">
-      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/logo-facadesxi.webp" alt="">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-ADC.png" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Boise-Cascade.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Builders-Lighting.png" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-GTS.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-JB.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Meeks-1.png" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-RES-Arch-Sales.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-Royal-Building-Solutions.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2024/05/Logo-Sunset-Stone.png" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-pioneer.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/Logo-sunvalley.webp" alt="" width="140" height="40" loading="lazy">
+      <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/05/logo-facadesxi.webp" alt="" width="140" height="40" loading="lazy">
     </div>
   </div>
 </section>
@@ -1584,7 +1584,7 @@
       <!-- WESTERN -->
       <div class="plan-card">
         <div class="plan-map-wrap">
-          <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/11/251118-MAP-WESTERN-US.webp" alt="Map showing Western US coverage" class="plan-map">
+          <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/11/251118-MAP-WESTERN-US.webp" alt="Map showing Western US coverage" class="plan-map" width="400" height="200" loading="lazy">
         </div>
         <div class="plan-body">
           <span class="plan-region">Western US</span>
@@ -1624,7 +1624,7 @@
       <!-- EASTERN — FEATURED -->
       <div class="plan-card featured">
         <div class="plan-map-wrap">
-          <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/11/251118-MAP-EASTERN-US.webp" alt="Map showing Eastern US coverage" class="plan-map">
+          <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/11/251118-MAP-EASTERN-US.webp" alt="Map showing Eastern US coverage" class="plan-map" width="400" height="200" loading="lazy">
           <div class="plan-best">★ Most Popular</div>
         </div>
         <div class="plan-body">
@@ -1665,7 +1665,7 @@
       <!-- FULL US -->
       <div class="plan-card">
         <div class="plan-map-wrap">
-          <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/11/251118-MAP-ENTIRE-US.webp" alt="Map showing Full US coverage" class="plan-map">
+          <img src="https://projectproconstructionleads.com/wp-content/uploads/2025/11/251118-MAP-ENTIRE-US.webp" alt="Map showing Full US coverage" class="plan-map" width="400" height="200" loading="lazy">
           <div class="plan-best">★ Best Value</div>
         </div>
         <div class="plan-body">
@@ -1825,6 +1825,7 @@
     <a href="/" aria-label="ProjectPro Home">
       <img src="brand_assets/ProjectPro-Logo-Horizontal-300x64.png"
            alt="ProjectPro Construction Leads"
+           width="300" height="64" loading="lazy"
            style="height:24px;width:auto;filter:brightness(0) invert(1);opacity:0.3;">
     </a>
     <div class="footer-copy">&copy; 2026 ProjectPro Construction Leads. All rights reserved.</div>
