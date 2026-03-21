@@ -1013,7 +1013,7 @@ function goToCheckout(region, btn){
   var url = 'https://projectproconstructionleads.com/?lp_buy=' + variationId;
   if(typeof gtag !== 'undefined') gtag('event','cta_click',{cta_label:'pricing-'+region, billing: currentBilling, company: companyName});
   if(typeof dataLayer !== 'undefined') dataLayer.push({event:'cta_click', ctaLabel:'pricing-'+region, billing: currentBilling});
-  if(typeof fbq !== 'undefined') fbq('track','InitiateCheckout',{content_name:'Free Trial — '+region,content_category:region,value:0,currency:'USD'});
+  if(typeof fbq !== 'undefined') fbq('track','Lead',{content_name:'Free Trial — '+region,content_category:region,value:0,currency:'USD'});
   window.location.href = url;
 }
 
